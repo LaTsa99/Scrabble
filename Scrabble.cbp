@@ -46,13 +46,29 @@
 			<Add library="dxguid" />
 			<Add directory="$(#sdl2.lib)" />
 		</Linker>
+		<Unit filename="src/assets/board.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/assets/board.h">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="src/assets/button.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/assets/button.h">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="src/assets/stone_img.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/assets/stone_img.h">
+			<Option compile="1" />
+		</Unit>
 		<Unit filename="src/import/stones.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/import/stones.h">
 			<Option compile="1" />
-			<Option link="1" />
-			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="src/init/init.c">
 			<Option compilerVar="CC" />

@@ -1,11 +1,9 @@
 #include "stones.h"
 
 void generateStones(char* language){
-    int ret;
+    int ret, len;
 
-    setlocale(LC_ALL, "de_DE.utf8");
-
-    ret = importStones(language);
+    ret = importStones(language, &len);
     if(ret == -1){
         SDL_Log("Stones: couldn't find sources!");
         exit(-1);
@@ -15,35 +13,35 @@ void generateStones(char* language){
     }
 }
 
-int importStones(char* language){
-    int ii=0, len, t_Stones_size = 5;
-    char temp[6];
+int importStones(char* language, int* len){
+    int ii=0, t_Stones_size = sizeof(t_Stones);
     FILE* file = NULL;
 
     if(strcmp(language,"en") == 0){
         file = fopen("stones_en.txt", "r");
-        len = 100;
+        *len = 100;
     }else if(strcmp(language,"de") == 0){
-        file = fopen("stones_de.txt", "r");
-        len = 102;
+        file = fopen("stones_de.latsa", "rb");
+        *len = 102;
+        #if DEBUG == 1
+            printf("%d\n",*len);
+        #endif
     }
 
-    if(file == NULL) return -1;
+    if(file == NULL){
+        SDL_Log("Error: Couldn't open the 'latsa' file: %s", SDL_GetError());
+        exit(1);
+    }
 
-    Stones = (t_Stones *)malloc(len * t_Stones_size);
+    Stones = (t_Stones *)malloc((*len) * t_Stones_size);
     if(Stones == NULL)return -2;
-    ii = 0;
-    while(fgets(temp,sizeof(temp),file) != NULL){
-        //printf("%s\n", temp);
-        Stones[ii].name = temp[0];
-        temp[strcspn(temp, "\n")] = '\0';
-        if(temp[2] == '0'){
-            Stones[ii].pts = temp[3] - '0';
-        }else{
-            Stones[ii].pts = 10;
-        }
-        //printf("%c %d\n", Stones[ii].name,Stones[ii].pts);
-        ii++;
+
+    for(ii=0;ii<*len;ii++){
+        fscanf(file,"%c;%d;%d;%d;", &Stones[ii].name, &Stones[ii].pts, &Stones[ii].x, &Stones[ii].y);
+
+        #if DEBUG == 1
+            printf("%c %d\n", Stones[ii].name,Stones[ii].pts);
+        #endif
     }
     fclose(file);
     return 0;

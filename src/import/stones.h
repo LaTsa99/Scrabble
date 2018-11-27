@@ -11,11 +11,13 @@
 typedef struct{
     char name;
     int pts;
+    int x;
+    int y;
 }t_Stones;
 
 t_Stones *Stones;
 
 void generateStones(char* language);
-int importStones(char* language);
+int importStones(char* language, int *len);
 
 #endif // STONES_H_INCLUDED

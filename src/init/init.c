@@ -6,7 +6,7 @@ void Game_init(int width, int height, SDL_Window **pwindow, SDL_Renderer **prend
     if(lang != NULL){
         generateStones(lang);
         if(Stones == NULL){
-            SDL_Log("Couldn't create stones: %s", SDL_GetError);
+            SDL_Log("Couldn't create stones: %s", SDL_GetError());
             exit(1);
         }
     }

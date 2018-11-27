@@ -7,35 +7,39 @@
 #include "init/init.h"
 #include "assets/button.h"
 #include "assets/board.h"
+#include "assets/stone_img.h"
 
-int board[15][15];
 
 int main(int argc, char *argv[]) {
     char lang[3] = "de";
-    int width = 1280;
-    int height = 720;
+    int width = 1467;
+    int height = 825;
     bool quit = false;
     char src[] = "Scrabbleboard.jpg";
+    char stn[] = "stones_texture_de.png";
 
     SDL_Window *window;
     SDL_Renderer *renderer;
 
     Game_init(width,height,&window,&renderer,lang);
-
-    /*SDL_Texture *scrabble_de = IMG_LoadTexture(renderer, "Scrabbleboard.jpg");
-    if(scrabble_de == NULL){
-        SDL_Log("Couldn't import german scrabbleboard: %s", SDL_GetError());
-        exit(1);
-    }
-
-
-    SDL_RenderCopy(renderer,scrabble_de,NULL,NULL);*/
     generateBoard(renderer,src);
+    drawStone(renderer,stn, 55,3,3);
+    drawStone(renderer,stn, 97,57,3);
+    #if DEBUG == 1
+    for(int ii=0;ii<102;ii++){
+        printf("%c, %d, %d, %d\n", Stones[ii].name, Stones[ii].pts, Stones[ii].x, Stones[ii].y);
+    }
+    #endif
 
     SDL_RenderPresent(renderer);
+    SDL_Event event;
 
     while(!quit){
-
+        SDL_WaitEvent(&event);
+        switch(event.type){
+        case SDL_QUIT:
+            SDL_Quit();
+        }
     }
 
     return 0;
