@@ -1,9 +1,9 @@
 #include "stones.h"
 
-void generateStones(char* language){
+void generateStones(){
     int ret, len;
 
-    ret = importStones(language, &len);
+    ret = importStones(&len);
     if(ret == -1){
         SDL_Log("Stones: couldn't find sources!");
         exit(-1);
@@ -13,20 +13,12 @@ void generateStones(char* language){
     }
 }
 
-int importStones(char* language, int* len){
+int importStones(int* len){
     int ii=0, t_Stones_size = sizeof(t_Stones);
     FILE* file = NULL;
 
-    if(strcmp(language,"en") == 0){
-        file = fopen("stones_en.txt", "r");
-        *len = 100;
-    }else if(strcmp(language,"de") == 0){
-        file = fopen("stones_de.latsa", "rb");
-        *len = 102;
-        #if DEBUG == 1
-            printf("%d\n",*len);
-        #endif
-    }
+    file = fopen("stones_en.latsa", "rb");
+    *len = 100;
 
     if(file == NULL){
         SDL_Log("Error: Couldn't open the 'latsa' file: %s", SDL_GetError());

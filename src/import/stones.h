@@ -5,7 +5,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <locale.h>
 
 
 typedef struct{
@@ -17,7 +16,7 @@ typedef struct{
 
 t_Stones *Stones;
 
-void generateStones(char* language);
-int importStones(char* language, int *len);
+void generateStones();
+int importStones(int *len);
 
 #endif // STONES_H_INCLUDED

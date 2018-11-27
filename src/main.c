@@ -11,7 +11,6 @@
 
 
 int main(int argc, char *argv[]) {
-    char lang[3] = "de";
     int width = 1467;
     int height = 825;
     bool quit = false;
@@ -21,8 +20,7 @@ int main(int argc, char *argv[]) {
     SDL_Window *window;
     SDL_Renderer *renderer;
 
-    Game_init(width,height,&window,&renderer,lang);
-    generateBoard(renderer,src);
+    Game_init(width,height,&window,&renderer, src);
     drawStone(renderer,stn, 55,3,3);
     drawStone(renderer,stn, 97,57,3);
     #if DEBUG == 1

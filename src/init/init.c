@@ -1,14 +1,12 @@
 #include "init.h"
 #include <SDL.h>
 
-void Game_init(int width, int height, SDL_Window **pwindow, SDL_Renderer **prenderer,char* lang){
+void Game_init(int width, int height, SDL_Window **pwindow, SDL_Renderer **prenderer, char *board_src){
     //Spielsteinen erstellen
-    if(lang != NULL){
-        generateStones(lang);
-        if(Stones == NULL){
-            SDL_Log("Couldn't create stones: %s", SDL_GetError());
-            exit(1);
-        }
+    generateStones();
+    if(Stones == NULL){
+        SDL_Log("Couldn't create stones: %s", SDL_GetError());
+        exit(1);
     }
     //Initialisieren von SDL Bibliotheken
     if(SDL_Init(SDL_INIT_EVERYTHING) < 0){
@@ -30,7 +28,14 @@ void Game_init(int width, int height, SDL_Window **pwindow, SDL_Renderer **prend
 
     SDL_RenderClear(renderer);
 
+    generateBoard(renderer, board_src);
+
+
     *pwindow = window;
     *prenderer = renderer;
+}
+
+void drawTitle(int width, int height, int x, int y, SDL_Window *window, SDL_Renderer *renderer){
+
 }
 
