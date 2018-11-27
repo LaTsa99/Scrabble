@@ -343,23 +343,26 @@
 	<math.h>
 	"SDL.h"
 
-1542150557 source:c:\users\latsa\desktop\scrabble\src\main.c
+1543221845 source:c:\users\latsa\desktop\scrabble\src\main.c
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL_image.h>
 	<math.h>
 	<stdbool.h>
 	<stdlib.h>
-	"import/stones.h"
+	"init/init.h"
+	"assets/button.h"
+	"assets/board.h"
+	"assets/stone_img.h"
 
-1542146670 c:\users\latsa\desktop\scrabble\src\import\stones.h
+1542925870 c:\users\latsa\desktop\scrabble\src\import\stones.h
 	<SDL.h>
 	<stdlib.h>
 	<stdio.h>
 	<string.h>
 	<locale.h>
 
-1542146670 source:c:\users\latsa\desktop\scrabble\src\import\stones.c
+1542926301 source:c:\users\latsa\desktop\scrabble\src\import\stones.c
 	"stones.h"
 
 1519932852 c:\program files (x86)\codeblocks\mingw\include\sdl2\sdl_image.h
@@ -368,11 +371,61 @@
 	"begin_code.h"
 	"close_code.h"
 
-1542150672 source:c:\users\latsa\desktop\scrabble\src\init\init.c
+1542654976 source:c:\users\latsa\desktop\scrabble\src\init\init.c
 	"init.h"
 	<SDL.h>
 
-1542150500 c:\users\latsa\desktop\scrabble\src\init\init.h
+1542204875 c:\users\latsa\desktop\scrabble\src\init\init.h
 	"../import/stones.h"
 	<SDL2/SDL2_gfxPrimitives.h>
+
+1542205684 source:c:\users\latsa\desktop\scrabble\src\assets\button.c
+	"button.h"
+
+1542205662 c:\users\latsa\desktop\scrabble\src\assets\button.h
+	<SDL.h>
+	<stdbool.h>
+
+1542205662 source:c:\users\latsa\desktop\scrabble\src\assets\button.h
+	<SDL.h>
+	<stdbool.h>
+
+1542150500 source:c:\users\latsa\desktop\scrabble\src\init\init.h
+	"../import/stones.h"
+	<SDL2/SDL2_gfxPrimitives.h>
+
+1543312429 source:c:\users\latsa\desktop\scrabble\src\assets\board.h
+	<SDL.h>
+	<SDL_image.h>
+	<stdlib.h>
+	"../import/stones.h"
+
+1543312429 c:\users\latsa\desktop\scrabble\src\assets\board.h
+	<SDL.h>
+	<SDL_image.h>
+	<stdlib.h>
+	"../import/stones.h"
+
+1542925870 source:c:\users\latsa\desktop\scrabble\src\import\stones.h
+	<SDL.h>
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<locale.h>
+
+1543217347 source:c:\users\latsa\desktop\scrabble\src\assets\board.c
+	"board.h"
+
+1542833318 source:c:\users\latsa\desktop\scrabble\src\assets\stone_img.h
+	<SDL.h>
+	<SDL_image.h>
+	"../import/stones.h"
+
+1542833318 c:\users\latsa\desktop\scrabble\src\assets\stone_img.h
+	<SDL.h>
+	<SDL_image.h>
+	"../import/stones.h"
+
+1543214226 source:c:\users\latsa\desktop\scrabble\src\assets\stone_img.c
+	"stone_img.h"
 
