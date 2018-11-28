@@ -4,6 +4,6 @@
 #include <SDL_image.h>
 #include "../import/stones.h"
 
-void drawStone(SDL_Renderer *r, char *src, int no, int x, int y);
+void drawStone(SDL_Renderer *r, char *src, int no, int x, int y, int width, int height);
 
 #endif // STONE_IMG_H_INCLUDED

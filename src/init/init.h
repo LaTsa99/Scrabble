@@ -3,9 +3,13 @@
 
 #include "../import/stones.h"
 #include "../assets/board.h"
+#include "../assets/text.h"
+#include "../assets/hand.h"
+//#include "../assets/button.h"
 #include <SDL2/SDL2_gfxPrimitives.h>
+#include <SDL2/SDL_ttf.h>
+#include <stdlib.h>
 
-void Game_init(int width, int height, SDL_Window **pwindow, SDL_Renderer **prenderer,char* board_src);
-void drawTitle(int width, int height, int x, int y, SDL_Window *window, SDL_Renderer *renderer);
+void Game_init(int width, int height, SDL_Window **pwindow, SDL_Renderer **prenderer, HandList *hand, TTF_Font **font);
 
 #endif // INIT_H_INCLUDED

@@ -1,7 +1,7 @@
 #include "init.h"
 #include <SDL.h>
 
-void Game_init(int width, int height, SDL_Window **pwindow, SDL_Renderer **prenderer, char *board_src){
+void Game_init(int width, int height, SDL_Window **pwindow, SDL_Renderer **prenderer, HandList *hand, TTF_Font **font){
     //Spielsteinen erstellen
     generateStones();
     if(Stones == NULL){
@@ -28,14 +28,10 @@ void Game_init(int width, int height, SDL_Window **pwindow, SDL_Renderer **prend
 
     SDL_RenderClear(renderer);
 
-    generateBoard(renderer, board_src);
-
+    defineBoard();
+    initFont(font);
+    initialHand(hand);
 
     *pwindow = window;
     *prenderer = renderer;
 }
-
-void drawTitle(int width, int height, int x, int y, SDL_Window *window, SDL_Renderer *renderer){
-
-}
-

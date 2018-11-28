@@ -2,19 +2,23 @@
 #define BUTTON_H
 
 #include <SDL.h>
+#include <SDL2/SDL_ttf.h>
 #include <stdbool.h>
+#include "text.h"
 
 
-typedef struct{
-    SDL_Rect draw_rect;
-    struct {
-        unsigned int r, g, b, a;
-    }color;
-
+struct t_button{
+    char label[10];
+    bool hover;
     bool pressed;
-}t_button;
+    int color;
+    int x;
+    int y;
+};
 
-void button_process_event(t_button *btn, const SDL_Event *ev);
-bool button(SDL_Renderer *r, t_button *btn);
+typedef struct t_button t_button;
+extern t_button ResetButton;
+
+void drawButton(SDL_Renderer *renderer,TTF_Font *font, t_button *button);
 
 #endif // BUTTON_H

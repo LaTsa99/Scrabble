@@ -4,31 +4,41 @@
 #include <math.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <time.h>
 #include "init/init.h"
-#include "assets/button.h"
+//#include "assets/button.h"
 #include "assets/board.h"
 #include "assets/stone_img.h"
+#include "assets/hand.h"
+#include "game/mouse.h"
+#include "game/render.h"
+#include "game/events.h"
 
 
 int main(int argc, char *argv[]) {
     int width = 1467;
-    int height = 825;
+    int height = 873;
+    int no, index;
+    int x, y;
+    bool holdingStone = false;
     bool quit = false;
-    char src[] = "Scrabbleboard.jpg";
-    char stn[] = "stones_texture_de.png";
-
+    bool center = false;
+    int centerError = 0;
+    TTF_Font *font;
+    HandList *hand;
     SDL_Window *window;
     SDL_Renderer *renderer;
+    //t_button ResetButton ={"Reset", false, false, 1000, 500};
 
-    Game_init(width,height,&window,&renderer, src);
-    drawStone(renderer,stn, 55,3,3);
-    drawStone(renderer,stn, 97,57,3);
-    #if DEBUG == 1
-    for(int ii=0;ii<102;ii++){
-        printf("%c, %d, %d, %d\n", Stones[ii].name, Stones[ii].pts, Stones[ii].x, Stones[ii].y);
-    }
-    #endif
+    hand = (HandList*)malloc(sizeof(HandList));
 
+    srand(time(NULL));
+
+
+
+    Game_init(width,height,&window,&renderer, hand, &font);
+    refreshRenderer(renderer, font, hand);
+    //SDL_Log("2");
     SDL_RenderPresent(renderer);
     SDL_Event event;
 
@@ -36,9 +46,36 @@ int main(int argc, char *argv[]) {
         SDL_WaitEvent(&event);
         switch(event.type){
         case SDL_QUIT:
-            SDL_Quit();
+            quit = true;
+            break;
+        case SDL_MOUSEBUTTONUP:
+            if(event.button.button == SDL_BUTTON_LEFT){
+                if(isThatInHand(event, &no, hand, &index)){
+                    holdingStone = true;
+                }else if(holdingStone && isOnTable(event, hand, index, &x, &y)){
+                    holdingStone = false;
+                }
+            }
+            break;
+        case SDL_KEYUP:
+            if(event.key.keysym.sym == SDL_SCANCODE_F)
+                enterWord(hand, &centerError);
+            else if(event.key.keysym.sym = SDL_SCANCODE_R)
+                resetState();
+            else if(event.key.keysym.sym = SDL_SCANCODE_G)
+                mixLetters();
         }
+        SDL_RenderClear(renderer);
+        refreshRenderer(renderer, font, hand);
+        SDL_RenderPresent(renderer);
     }
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
+    free(Stones);
+    freeHand(hand->first);
+    free(hand);
+    TTF_CloseFont(font);
+    SDL_Quit();
 
     return 0;
 }

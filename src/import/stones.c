@@ -21,7 +21,7 @@ int importStones(int* len){
     *len = 100;
 
     if(file == NULL){
-        SDL_Log("Error: Couldn't open the 'latsa' file: %s", SDL_GetError());
+        SDL_Log("Stones: Couldn't open the 'latsa' file: %s", SDL_GetError());
         exit(1);
     }
 
@@ -38,3 +38,4 @@ int importStones(int* len){
     fclose(file);
     return 0;
 }
+
