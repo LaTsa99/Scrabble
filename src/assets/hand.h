@@ -41,7 +41,7 @@ HandItem* addHandReset(HandList *hand, HandItem *prevent);
 void freeHand(HandItem *first);
 void delHandItem(HandItem *first, int index, HandList *hand);
 void reindexList(HandItem *first);
-void regenerateList(HandList *hand, HandItem *first);
+void regenerateList(HandList *hand);
 void resetList(HandList *hand);
 
 #endif // HAND_H_INCLUDED

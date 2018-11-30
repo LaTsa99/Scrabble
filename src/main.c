@@ -1,7 +1,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL2_gfxPrimitives.h>
 #include <SDL_image.h>
-#include <math.h>
+//#include <math.h>
 #include <stdbool.h>
 #include <stdlib.h>
 #include <time.h>
@@ -22,8 +22,9 @@ int main(int argc, char *argv[]) {
     int x, y;
     bool holdingStone = false;
     bool quit = false;
-    bool center = false;
+    //bool center = false;
     int centerError = 0;
+    int valid = 1;
     TTF_Font *font;
     HandList *hand;
     SDL_Window *window;
@@ -37,7 +38,7 @@ int main(int argc, char *argv[]) {
 
 
     Game_init(width,height,&window,&renderer, hand, &font);
-    refreshRenderer(renderer, font, hand);
+    refreshRenderer(renderer, font, hand, centerError, valid);
     //SDL_Log("2");
     SDL_RenderPresent(renderer);
     SDL_Event event;
@@ -58,15 +59,19 @@ int main(int argc, char *argv[]) {
             }
             break;
         case SDL_KEYUP:
-            if(event.key.keysym.sym == SDL_SCANCODE_F)
-                enterWord(hand, &centerError);
-            else if(event.key.keysym.sym = SDL_SCANCODE_R)
-                resetState();
-            else if(event.key.keysym.sym = SDL_SCANCODE_G)
-                mixLetters();
+            if(event.key.keysym.sym == SDLK_f)
+                enterWord(hand, &centerError, &valid);
+            else if(event.key.keysym.sym == SDLK_r){
+                resetState(hand);
+                holdingStone = false;
+            }
+            else if(event.key.keysym.sym == SDLK_g)
+                mixLetters(hand, &centerError, &valid);
+            else if(event.key.keysym.sym == SDLK_ESCAPE)
+                quit = true;
         }
         SDL_RenderClear(renderer);
-        refreshRenderer(renderer, font, hand);
+        refreshRenderer(renderer, font, hand, centerError, valid);
         SDL_RenderPresent(renderer);
     }
     SDL_DestroyRenderer(renderer);

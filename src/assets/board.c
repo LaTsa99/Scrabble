@@ -22,6 +22,7 @@ void generateBoard(SDL_Renderer *r, char* src){
         SDL_Log("Board: Couldn't copy texture: %s", SDL_GetError());
         exit(1);
     }
+    SDL_DestroyTexture(board);
 }
 
 void defineBoard(){
@@ -32,5 +33,9 @@ void defineBoard(){
             board[ii][jj].y = 4+jj*58;
             board[ii][jj].Stone = -1;
         }
+    }
+    for(ii=0;ii<7;ii++){
+        rst[ii].ii = -1;
+        rst[ii].jj = -1;
     }
 }

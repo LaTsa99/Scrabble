@@ -9,7 +9,6 @@ void drawStone(SDL_Renderer *r, char *src, int no, int x, int y, int width, int 
 
     SDL_Rect source = {Stones[no].x, Stones[no].y, 65, 65};
     SDL_Rect dest = {x, y, width, height};
-
     SDL_RenderCopy(r, stone, &source, &dest);
     SDL_DestroyTexture(stone);
 

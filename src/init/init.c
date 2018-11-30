@@ -31,6 +31,7 @@ void Game_init(int width, int height, SDL_Window **pwindow, SDL_Renderer **prend
     defineBoard();
     initFont(font);
     initialHand(hand);
+    initWord();
 
     *pwindow = window;
     *prenderer = renderer;

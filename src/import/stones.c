@@ -36,6 +36,9 @@ int importStones(int* len){
         #endif
     }
     fclose(file);
+    /*for(ii=0;ii<100;ii++){
+        SDL_Log("%d", Stones[ii].pts);
+    }*/
     return 0;
 }
 

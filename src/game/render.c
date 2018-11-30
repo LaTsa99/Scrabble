@@ -1,6 +1,6 @@
 #include "render.h"
 
-void refreshRenderer(SDL_Renderer *renderer, TTF_Font *font, HandList *hand){
+void refreshRenderer(SDL_Renderer *renderer, TTF_Font *font, HandList *hand, int centerError, int valid){
     char src[] = "Scrabbleboard.jpg";
     char stn[] = "stones_texture_de.png";
     int ii, jj;
@@ -26,9 +26,17 @@ void refreshRenderer(SDL_Renderer *renderer, TTF_Font *font, HandList *hand){
     drawText(renderer, font, 900, 300, 300, 40, "F - Enter this word");
     drawText(renderer, font, 900, 350, 300, 40, "R - Reset this move");
     drawText(renderer, font, 900, 400, 236, 40, "G - New letters");
+    drawText(renderer, font, 900, 450, 150, 40, "Esc - Quit");
+    drawText(renderer, font, 1100, 700, 100, 60, "Score: ");
+    drawText(renderer, font, 1220, 700, 60, 60, score_str);
     //SDL_Log("szexelve 2");
     drawHand(renderer, hand, stn);
     //SDL_Log("megbaszva 3");
-
+    if(centerError){
+        drawText(renderer, font, 900, 600, 500, 40, "Please, place a stone on the star!");
+    }
+    if(!valid){
+        drawText(renderer, font, 900, 650, 250, 40, "Word isn't valid!");
+    }
     //drawButton(renderer, font, &ResetButton);
 }

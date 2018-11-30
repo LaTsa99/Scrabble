@@ -5,6 +5,7 @@
 #include <SDL2/SDL2_gfxPrimitives.h>
 #include <SDL_image.h>
 #include <stdbool.h>
+#include "word.h"
 #include "../assets/hand.h"
 #include "../assets/board.h"
 //#include "../assets/button.h"

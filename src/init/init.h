@@ -1,6 +1,7 @@
 #ifndef INIT_H_INCLUDED
 #define INIT_H_INCLUDED
 
+#include "../game/word.h"
 #include "../import/stones.h"
 #include "../assets/board.h"
 #include "../assets/text.h"
