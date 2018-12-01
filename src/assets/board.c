@@ -25,8 +25,9 @@ void generateBoard(SDL_Renderer *r, char* src){
     SDL_DestroyTexture(board);
 }
 
-void defineBoard(){
+void defineBoard(t_board board[15][15], previous_step *rst){
     int ii,jj;
+
     for(ii=0;ii<15;ii++){
         for(jj=0;jj<15;jj++){
             board[ii][jj].x = 3+ii*58;

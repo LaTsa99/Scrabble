@@ -4,6 +4,7 @@
 #include "../import/stones.h"
 #include "stone_img.h"
 #include "text.h"
+
 #include <SDL2/SDL_ttf.h>
 #include <time.h>
 
@@ -30,18 +31,14 @@ typedef struct HandList HandList;
 typedef struct HandItem HandItem;
 typedef struct HandPosition HandPosition;
 
-int RandTable[100];
-HandPosition posOfHands[7];
-int prev[7];
-
-void drawHand(SDL_Renderer *renderer, HandList *hand, char* stn_src);
-void initialHand(HandList *hand);
-HandItem *addHand(HandList *hand, HandItem *prevent);
-HandItem* addHandReset(HandList *hand, HandItem *prevent);
+void drawHand(SDL_Renderer *renderer, HandList *hand, char* stn_src, t_Stones *Stones, HandPosition *posOfHands);
+void initialHand(HandList *hand, int *RandTable, HandPosition *posOfHands, int *prev);
+HandItem* addHand(HandList *hand, HandItem *prevent, int *RandTable);
+HandItem* addHandReset(HandList *hand, HandItem *prevent, int *prev);
 void freeHand(HandItem *first);
 void delHandItem(HandItem *first, int index, HandList *hand);
 void reindexList(HandItem *first);
-void regenerateList(HandList *hand);
-void resetList(HandList *hand);
+void regenerateList(HandList *hand, int *RandTable, int *prev);
+void resetList(HandList *hand, int *RandTable, int *prev);
 
 #endif // HAND_H_INCLUDED

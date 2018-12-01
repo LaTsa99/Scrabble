@@ -52,16 +52,52 @@
 		<Unit filename="src/assets/board.h">
 			<Option compile="1" />
 		</Unit>
-		<Unit filename="src/assets/button.c">
+		<Unit filename="src/assets/hand.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/assets/button.h">
+		<Unit filename="src/assets/hand.h">
 			<Option compile="1" />
 		</Unit>
 		<Unit filename="src/assets/stone_img.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/assets/stone_img.h">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="src/assets/text.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/assets/text.h">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="src/game/events.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/game/events.h">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="src/game/mouse.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/game/mouse.h">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="src/game/render.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/game/render.h">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="src/game/score.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/game/score.h">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="src/game/word.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/game/word.h">
 			<Option compile="1" />
 		</Unit>
 		<Unit filename="src/import/stones.c">
@@ -73,15 +109,12 @@
 		<Unit filename="src/init/init.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/init/init.h" />
+		<Unit filename="src/init/init.h">
+			<Option compile="1" />
+		</Unit>
 		<Unit filename="src/main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="src/main_include.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-		<Unit filename="stones_de.txt" />
-		<Unit filename="stones_en.txt" />
 		<Extensions>
 			<code_completion />
 			<envvars />

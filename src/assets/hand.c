@@ -1,17 +1,17 @@
 #include "hand.h"
 
-void drawHand(SDL_Renderer *renderer, HandList *hand, char* stn_src){
+void drawHand(SDL_Renderer *renderer, HandList *hand, char* stn_src, t_Stones *Stones, HandPosition *posOfHands){
     int ii = 0;
     HandItem *jj = hand->first;
 
     if(jj != NULL){
         for(;jj != NULL;ii++, jj = jj->next){
-            drawStone(renderer,stn_src, jj->no, posOfHands[ii].x, posOfHands[ii].y, 65, 65);
+            drawStone(renderer,stn_src, jj->no, posOfHands[ii].x, posOfHands[ii].y, 65, 65, Stones);
         }
     }
 }
 
-void initialHand(HandList *hand){
+void initialHand(HandList *hand, int *RandTable, HandPosition *posOfHands, int *prev){
     int baseX = 900;
     int baseY = 200;
     int ii;
@@ -35,19 +35,18 @@ void initialHand(HandList *hand){
 
     ii = rand()%100;
     RandTable[ii] = 1;
-    //usedStones++;
     temp->no = ii;
     prev[0] = temp->no;
     hand->first = temp;
     hand->last = temp;
     hand->listSize = 1;
     for(ii=1;ii<7;ii++){
-        temp = addHand(hand, hand->last);
+        temp = addHand(hand, hand->last, RandTable);
         prev[ii] = temp->no;
     }
 }
 
-HandItem* addHand(HandList *hand, HandItem *prevent){
+HandItem* addHand(HandList *hand, HandItem *prevent, int *RandTable){
     int ii;
     HandItem *newItem = (HandItem*)malloc(sizeof(HandItem));
     newItem->index = prevent->index + 1;
@@ -56,10 +55,8 @@ HandItem* addHand(HandList *hand, HandItem *prevent){
     if(RandTable[ii] != 0){
         if(ii > 0) ii--;
         else ii = 99;
-        // usedStones++;
     }else if(RandTable[ii] == 0){
         newItem->no = ii;
-         //SDL_Log("%d", ii);
         RandTable[ii] = 1;
     }
 
@@ -74,12 +71,11 @@ HandItem* addHand(HandList *hand, HandItem *prevent){
     hand->listSize = hand->listSize + 1;
 
     ii = 0;
-   // while(prev[ii] )
 
     return newItem;
 }
 
-HandItem* addHandReset(HandList *hand, HandItem *prevent){
+HandItem* addHandReset(HandList *hand, HandItem *prevent, int *prev){
     HandItem *newItem = (HandItem*)malloc(sizeof(HandItem));
     newItem->index = prevent->index + 1;
 
@@ -111,10 +107,8 @@ void delHandItem(HandItem *first, int index, HandList *hand){
         ii++;
         jj = jj->next;
     }
-    //SDL_Log("1");
     if(ii<=index){
         HandItem *prev_item, *next_item;
-        //SDL_Log("2");
         if(jj->prev != NULL && jj->next != NULL){
             prev_item = jj->prev;
             next_item = jj->next;
@@ -146,7 +140,7 @@ void reindexList(HandItem *first){
     }
 }
 
-void regenerateList(HandList *hand){
+void regenerateList(HandList *hand, int *RandTable, int *prev){
     int ii, len;
     HandItem *temp;
     if(hand->last == NULL){
@@ -156,7 +150,6 @@ void regenerateList(HandList *hand){
         if(RandTable[ii] != 0){
             if(ii > 0) ii--;
             else ii = 99;
-            // usedStones++;
         }else if(RandTable[ii] == 0){
             temp->no = ii;
             RandTable[ii] = 1;
@@ -170,7 +163,7 @@ void regenerateList(HandList *hand){
     if(hand->listSize < 7){
         len = 7 - hand->listSize;
         for(ii=0;ii<len;ii++){
-            temp = addHand(hand,hand->last);
+            temp = addHand(hand,hand->last, RandTable);
             prev[ii] = temp->no;
         }
     }
@@ -179,7 +172,7 @@ void regenerateList(HandList *hand){
     }
 }
 
-void resetList(HandList *hand){
+void resetList(HandList *hand, int *RandTable, int *prev){
     int ii = 0;
     HandItem *temp;
     freeHand(hand->first);
@@ -197,6 +190,6 @@ void resetList(HandList *hand){
     hand->last = temp;
     hand->listSize = 1;
     for(;ii<7;ii++){
-        temp = addHandReset(hand, hand->last);
+        temp = addHandReset(hand, hand->last, prev);
     }
 }

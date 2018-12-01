@@ -1,11 +1,13 @@
 #ifndef WORD_H_INCLUDED
 #define WORD_H_INCLUDED
 
+#include "../assets/board.h"
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
 #include <SDL.h>
 #include <stdbool.h>
+
 
 struct letters{
     char letter;
@@ -15,13 +17,8 @@ struct letters{
 
 typedef struct letters letters;
 
-letters word[15];
 
-void initWord();
-bool checkWord(char *line);
-bool rowOrColumn(int *RoC);
-void sortWord(int RoC);
-void swapWordItem(letters *a, letters *b);
+bool checkWord(char *line, int vert, int linenumber, t_board board[15][15]);
 bool wordCmp(char* buffer, char* thisWord);
 bool checkDictionary(char *word);
 

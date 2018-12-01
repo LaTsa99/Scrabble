@@ -343,26 +343,28 @@
 	<math.h>
 	"SDL.h"
 
-1543221845 source:c:\users\latsa\desktop\scrabble\src\main.c
+1543700929 source:c:\users\latsa\desktop\scrabble\src\main.c
 	<SDL2/SDL.h>
 	<SDL2/SDL2_gfxPrimitives.h>
 	<SDL_image.h>
-	<math.h>
 	<stdbool.h>
 	<stdlib.h>
+	<time.h>
 	"init/init.h"
-	"assets/button.h"
 	"assets/board.h"
 	"assets/stone_img.h"
+	"assets/hand.h"
+	"game/mouse.h"
+	"game/render.h"
+	"game/events.h"
 
-1542925870 c:\users\latsa\desktop\scrabble\src\import\stones.h
+1543662884 c:\users\latsa\desktop\scrabble\src\import\stones.h
 	<SDL.h>
 	<stdlib.h>
 	<stdio.h>
 	<string.h>
-	<locale.h>
 
-1542926301 source:c:\users\latsa\desktop\scrabble\src\import\stones.c
+1543663734 source:c:\users\latsa\desktop\scrabble\src\import\stones.c
 	"stones.h"
 
 1519932852 c:\program files (x86)\codeblocks\mingw\include\sdl2\sdl_image.h
@@ -371,61 +373,233 @@
 	"begin_code.h"
 	"close_code.h"
 
-1542654976 source:c:\users\latsa\desktop\scrabble\src\init\init.c
+1543698763 source:c:\users\latsa\desktop\scrabble\src\init\init.c
 	"init.h"
 	<SDL.h>
 
-1542204875 c:\users\latsa\desktop\scrabble\src\init\init.h
+1543698778 c:\users\latsa\desktop\scrabble\src\init\init.h
+	"../game/word.h"
 	"../import/stones.h"
+	"../assets/board.h"
+	"../assets/text.h"
+	"../assets/hand.h"
 	<SDL2/SDL2_gfxPrimitives.h>
+	<SDL2/SDL_ttf.h>
+	<stdlib.h>
 
-1542205684 source:c:\users\latsa\desktop\scrabble\src\assets\button.c
+1543432997 source:c:\users\latsa\desktop\scrabble\src\assets\button.c
 	"button.h"
 
-1542205662 c:\users\latsa\desktop\scrabble\src\assets\button.h
+1543431418 c:\users\latsa\desktop\scrabble\src\assets\button.h
 	<SDL.h>
+	<SDL2/SDL_ttf.h>
 	<stdbool.h>
+	"text.h"
 
-1542205662 source:c:\users\latsa\desktop\scrabble\src\assets\button.h
+1543431418 source:c:\users\latsa\desktop\scrabble\src\assets\button.h
 	<SDL.h>
+	<SDL2/SDL_ttf.h>
 	<stdbool.h>
+	"text.h"
 
-1542150500 source:c:\users\latsa\desktop\scrabble\src\init\init.h
+1543698778 source:c:\users\latsa\desktop\scrabble\src\init\init.h
+	"../game/word.h"
 	"../import/stones.h"
+	"../assets/board.h"
+	"../assets/text.h"
+	"../assets/hand.h"
 	<SDL2/SDL2_gfxPrimitives.h>
+	<SDL2/SDL_ttf.h>
+	<stdlib.h>
 
-1543312429 source:c:\users\latsa\desktop\scrabble\src\assets\board.h
+1543696198 source:c:\users\latsa\desktop\scrabble\src\assets\board.h
 	<SDL.h>
 	<SDL_image.h>
 	<stdlib.h>
 	"../import/stones.h"
 
-1543312429 c:\users\latsa\desktop\scrabble\src\assets\board.h
+1543696198 c:\users\latsa\desktop\scrabble\src\assets\board.h
 	<SDL.h>
 	<SDL_image.h>
 	<stdlib.h>
 	"../import/stones.h"
 
-1542925870 source:c:\users\latsa\desktop\scrabble\src\import\stones.h
+1543662884 source:c:\users\latsa\desktop\scrabble\src\import\stones.h
 	<SDL.h>
 	<stdlib.h>
 	<stdio.h>
 	<string.h>
-	<locale.h>
 
-1543217347 source:c:\users\latsa\desktop\scrabble\src\assets\board.c
+1543692824 source:c:\users\latsa\desktop\scrabble\src\assets\board.c
 	"board.h"
 
-1542833318 source:c:\users\latsa\desktop\scrabble\src\assets\stone_img.h
+1543663059 source:c:\users\latsa\desktop\scrabble\src\assets\stone_img.h
 	<SDL.h>
 	<SDL_image.h>
 	"../import/stones.h"
 
-1542833318 c:\users\latsa\desktop\scrabble\src\assets\stone_img.h
+1543663059 c:\users\latsa\desktop\scrabble\src\assets\stone_img.h
 	<SDL.h>
 	<SDL_image.h>
 	"../import/stones.h"
 
-1543214226 source:c:\users\latsa\desktop\scrabble\src\assets\stone_img.c
+1543663060 source:c:\users\latsa\desktop\scrabble\src\assets\stone_img.c
 	"stone_img.h"
+
+1543663153 c:\users\latsa\desktop\scrabble\src\assets\text.h
+	<SDL2/SDL2_gfxPrimitives.h>
+	<SDL2/SDL_ttf.h>
+	<stdlib.h>
+
+1543663153 source:c:\users\latsa\desktop\scrabble\src\assets\text.h
+	<SDL2/SDL2_gfxPrimitives.h>
+	<SDL2/SDL_ttf.h>
+	<stdlib.h>
+
+1543432981 source:c:\users\latsa\desktop\scrabble\src\assets\text.c
+	"text.h"
+
+1543698831 c:\users\latsa\desktop\scrabble\src\assets\hand.h
+	"../import/stones.h"
+	"stone_img.h"
+	"text.h"
+	<SDL2/SDL_ttf.h>
+	<time.h>
+
+1543698831 source:c:\users\latsa\desktop\scrabble\src\assets\hand.h
+	"../import/stones.h"
+	"stone_img.h"
+	"text.h"
+	<SDL2/SDL_ttf.h>
+	<time.h>
+
+1543698641 source:c:\users\latsa\desktop\scrabble\src\assets\hand.c
+	"hand.h"
+
+1543698386 source:c:\users\latsa\desktop\scrabble\src\game\mouse.h
+	<SDL2/SDL.h>
+	<SDL2/SDL2_gfxPrimitives.h>
+	<SDL_image.h>
+	<stdbool.h>
+	"word.h"
+	"../assets/hand.h"
+	"../assets/board.h"
+	"../import/stones.h"
+	"events.h"
+
+1543698386 c:\users\latsa\desktop\scrabble\src\game\mouse.h
+	<SDL2/SDL.h>
+	<SDL2/SDL2_gfxPrimitives.h>
+	<SDL_image.h>
+	<stdbool.h>
+	"word.h"
+	"../assets/hand.h"
+	"../assets/board.h"
+	"../import/stones.h"
+	"events.h"
+
+1543698375 source:c:\users\latsa\desktop\scrabble\src\game\mouse.c
+	"mouse.h"
+	<stdbool.h>
+
+1543700522 source:c:\users\latsa\desktop\scrabble\src\game\render.c
+	"render.h"
+
+1543698442 c:\users\latsa\desktop\scrabble\src\game\render.h
+	<SDL2/SDL.h>
+	<SDL2/SDL2_gfxPrimitives.h>
+	<SDL_image.h>
+	<string.h>
+	<stdlib.h>
+	<ctype.h>
+	"../assets/board.h"
+	"../assets/text.h"
+	"../assets/hand.h"
+	"score.h"
+	"events.h"
+
+1543698442 source:c:\users\latsa\desktop\scrabble\src\game\render.h
+	<SDL2/SDL.h>
+	<SDL2/SDL2_gfxPrimitives.h>
+	<SDL_image.h>
+	<string.h>
+	<stdlib.h>
+	<ctype.h>
+	"../assets/board.h"
+	"../assets/text.h"
+	"../assets/hand.h"
+	"score.h"
+	"events.h"
+
+1543700929 source:c:\users\latsa\desktop\scrabble\src\game\events.h
+	"../assets/hand.h"
+	"../assets/board.h"
+	"score.h"
+	"word.h"
+	<stdbool.h>
+
+1543701095 source:c:\users\latsa\desktop\scrabble\src\game\events.c
+	"events.h"
+
+1543700929 c:\users\latsa\desktop\scrabble\src\game\events.h
+	"../assets/hand.h"
+	"../assets/board.h"
+	"score.h"
+	"word.h"
+	<stdbool.h>
+
+1543663590 c:\users\latsa\desktop\scrabble\src\game\score.h
+	<string.h>
+	"../import/stones.h"
+	"../assets/board.h"
+
+1543663590 source:c:\users\latsa\desktop\scrabble\src\game\score.h
+	<string.h>
+	"../import/stones.h"
+	"../assets/board.h"
+
+1543663713 source:c:\users\latsa\desktop\scrabble\src\game\score.c
+	"score.h"
+
+1543666038 c:\users\latsa\desktop\scrabble\src\game\word.h
+	"../assets/board.h"
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	<SDL.h>
+	<stdbool.h>
+
+1543666038 source:c:\users\latsa\desktop\scrabble\src\game\word.h
+	"../assets/board.h"
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	<SDL.h>
+	<stdbool.h>
+
+1543663428 source:c:\users\latsa\desktop\scrabble\src\game\word.c
+	"word.h"
+
+1543676841 source:c:\users\latsa\desktop\scrabble\src\game\joker.h
+	<SDL2/SDL.h>
+	<SDL2/SDL2_gfxPrimitives.h>
+	<SDL_image.h>
+	<SDL2/SDL_ttf.h>
+	<stdlib.h>
+	<stdbool.h>
+	<string.h>
+	"../import/stones.h"
+
+1543676841 c:\users\latsa\desktop\scrabble\src\game\joker.h
+	<SDL2/SDL.h>
+	<SDL2/SDL2_gfxPrimitives.h>
+	<SDL_image.h>
+	<SDL2/SDL_ttf.h>
+	<stdlib.h>
+	<stdbool.h>
+	<string.h>
+	"../import/stones.h"
+
+1543676841 source:c:\users\latsa\desktop\scrabble\src\game\joker.c
+	"joker.h"
 

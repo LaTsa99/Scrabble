@@ -14,9 +14,6 @@ typedef struct{
     int y;
 }t_Stones;
 
-t_Stones *Stones;
-
 void generateStones();
-int importStones(int *len);
 
 #endif // STONES_H_INCLUDED

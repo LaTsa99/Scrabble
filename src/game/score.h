@@ -5,7 +5,8 @@
 #include "../import/stones.h"
 #include "../assets/board.h"
 
-extern int score;
-extern char score_str[5];
+
+
+void calculateScore(t_board board[15][15], int *score, char *score_str, t_Stones *Stone);
 
 #endif // SCORE_H_INCLUDED

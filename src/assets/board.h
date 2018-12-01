@@ -18,11 +18,9 @@ struct previous_step{
 
 typedef struct t_board t_board;
 typedef struct previous_step previous_step;
-t_board board[15][15];
-previous_step rst[7];
 
 
 void generateBoard(SDL_Renderer *r, char* src);
-void defineBoard();
+void defineBoard(t_board board[15][15], previous_step *rst);
 
 #endif // BOARD_H_INCLUDED

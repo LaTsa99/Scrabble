@@ -1,7 +1,7 @@
 #include "mouse.h"
 #include <stdbool.h>
 
-bool isThatInHand(SDL_Event event, int *no, HandList *hand, int *index){
+bool isThatInHand(SDL_Event event, int *no, HandList *hand, int *index, HandPosition *posOfHands){
     int ii;
     bool isThere = false;
     int x = event.button.x;
@@ -28,9 +28,9 @@ bool isThatInHand(SDL_Event event, int *no, HandList *hand, int *index){
     return isThere;
 }
 
-bool isOnTable(SDL_Event event, HandList *hand, int index, int *drawX, int *drawY){
+bool isOnTable(SDL_Event event, HandList *hand, int index, int *drawX, int *drawY, t_board board[15][15], t_Stones *Stones, eventTable *events, previous_step *rst){
     bool isThere = false;
-    int ii,jj, kk, zz = 0;
+    int ii,jj, zz = 0;
     int x = event.button.x;
     int y = event.button.y;
     int currX, currY;
@@ -44,44 +44,40 @@ bool isOnTable(SDL_Event event, HandList *hand, int index, int *drawX, int *draw
                 currX = board[ii][jj].x;
                 currY = board[ii][jj].y;
                 if(x > currX && x < currX + 58 && y > currY && y < currY + 58 && board[ii][jj].Stone == -1){
-                    //SDL_Log("sqf");
                     delHandItem(hand->first, index, hand);
                     *drawX = currX;
                     *drawY = currY;
                     board[ii][jj].Stone = temp->no;
-
-                    while(word[zz].boardX != -1){
-                        zz++;
-                    }
-                    word[zz].letter = Stones[temp->no].name;
-                    word[zz].boardX = ii;
-                    word[zz].boardY = jj;
-
 
                     while(rst[zz].ii != -1){
                         zz++;
                     }
                     rst[zz].ii = ii;
                     rst[zz].jj = jj;
-                    //SDL_Log("mouse: %d : %d %d", zz, ii, jj);
-                    /*for(ii=0;ii<15;ii++){
-                        for(jj=0;jj<15;jj++){
-                            SDL_Log("%d: %d",board[ii][jj].Stone, (ii*15) + jj);
-                        }
-                    }*/
                     isThere = true;
+
+                    if(events->connected == 0){
+                        if(ii > 0){
+                            if(board[ii-1][jj].Stone != -1 || board[ii+1][jj].Stone != -1) events->connected = 1;
+                        }else{
+                            if(board[ii+1][jj].Stone != -1) events->connected = 1;
+                        }
+                        if(jj > 0){
+                            if(board[ii][jj-1].Stone != -1 || board[ii][jj+1].Stone != -1) events->connected = 1;
+                        }else{
+                            if(board[ii][jj+1].Stone != -1) events->connected = 1;
+                        }
+                    }
+
+
                 }
             }
         }
     }
+    if(Stones[temp->no].name == 'j'){
+        events->jokerInput = 1;
+        events->currentJoker = temp->no;
+    }
 
     return isThere;
 }
-
-/*bool isOnResetButton(SDL_Event event, t_button *reset){
-    if(event.motion.x >= reset->x + 300 && event.motion.x <= reset->x
-       && event.motion.y >= reset->y + 50 && event.motion.y <= reset->y){
-        reset->hover = true;
-       }else reset->hover = false;
-    return reset->hover;
-}*/
