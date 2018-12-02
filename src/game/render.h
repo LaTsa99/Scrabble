@@ -15,6 +15,8 @@
 #include "events.h"
 
 
-void refreshRenderer(SDL_Renderer *renderer, TTF_Font *font, HandList *hand, t_board board[15][15], char *score_str, t_Stones *Stones, eventTable *events, HandPosition *posOfHands);
-bool input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, SDL_Color szoveg, TTF_Font *font, SDL_Renderer *renderer, t_Stones *Stones);
+void refreshRenderer(SDL_Renderer *renderer, TTF_Font *font, HandList *hand, t_board board[15][15],
+                     char *score_str, t_Stones *Stones, eventTable *events, HandPosition *posOfHands);
+bool input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, SDL_Color szoveg,
+                TTF_Font *font, SDL_Renderer *renderer, t_Stones *Stones);
 #endif // RENDER_H_INCLUDED

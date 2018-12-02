@@ -1,11 +1,13 @@
 #include "render.h"
 
-void refreshRenderer(SDL_Renderer *renderer, TTF_Font *font, HandList *hand, t_board board[15][15], char *score_str, t_Stones *Stones, eventTable *events, HandPosition *posOfHands){
+//draws the content of the window
+void refreshRenderer(SDL_Renderer *renderer, TTF_Font *font, HandList *hand, t_board board[15][15],
+                     char *score_str, t_Stones *Stones, eventTable *events, HandPosition *posOfHands){
     char src[] = "Scrabbleboard.jpg";
-    char stn[] = "stones_texture_de.png";
+    char stn[] = "stones_texture.png";
     int ii, jj;
 
-    //here I take care of jokers as well
+    //here I take care of jokers as well, so i need these variables
     char input[2];
     char letter;
     SDL_Rect input_pos = {370,350, 80, 40};
@@ -13,10 +15,7 @@ void refreshRenderer(SDL_Renderer *renderer, TTF_Font *font, HandList *hand, t_b
     SDL_Color white = {255,255,255};
     bool gotit = false;
 
-    if(font == NULL){
-        SDL_Log("font basfqampf qfq");
-        exit(1);
-    }
+    //draws board and draws every tiles, that are on the board
     generateBoard(renderer, src);
     for(ii=0;ii<15;ii++){
         for(jj=0;jj<15;jj++){
@@ -26,6 +25,7 @@ void refreshRenderer(SDL_Renderer *renderer, TTF_Font *font, HandList *hand, t_b
             }
         }
     }
+    //drawing anything that is not on the board
     drawText(renderer,font,1000,25,300,100,"Scrabble");
     drawText(renderer, font, 900, 150, 150, 40, "Your hand:");
     drawText(renderer, font, 900, 300, 300, 40, "F - Enter this word");
@@ -46,6 +46,7 @@ void refreshRenderer(SDL_Renderer *renderer, TTF_Font *font, HandList *hand, t_b
         drawText(renderer, font, 900, 600, 210, 40, "Move is illegal!");
     }
 
+    //takes care of placed jokers
     if(events->jokerInput){
         input_text(input, 2, input_pos, black, white, font, renderer, Stones);
         events->jokerInput = 0;
@@ -57,11 +58,14 @@ void refreshRenderer(SDL_Renderer *renderer, TTF_Font *font, HandList *hand, t_b
         Stones[events->currentJoker].x = Stones[ii].x;
         Stones[events->currentJoker].y = Stones[ii].y;
     }
+
+    //makes sure that the background is always black (some sort of bug makes it white sometimes)
     SDL_SetRenderDrawColor(renderer, 0,0,0,0);
 
 }
 
 //FROM INFOC.EET.BME.HU
+//I just copied the code from there, modified some statements tho
 bool input_text(char *dest, size_t hossz, SDL_Rect teglalap, SDL_Color hatter, SDL_Color szoveg, TTF_Font *font, SDL_Renderer *renderer, t_Stones *Stones) {
     int ii;
     /* Ez tartalmazza az aktualis szerkesztest */

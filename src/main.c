@@ -1,5 +1,4 @@
 #include <SDL2/SDL.h>
-#include <SDL2/SDL2_gfxPrimitives.h>
 #include <SDL_image.h>
 
 #include <stdbool.h>
@@ -19,12 +18,15 @@
 int main(int argc, char *argv[]) {
     int width = 1467;
     int height = 873;
-    int no, index;
     int x, y;
+
+    int no, index;
+    int score = 0;
+    char score_str[5] = "0";
     bool holdingStone = false;
     bool quit = false;
 
-    eventTable events = {0,1,1,0,0,0,98,0};
+    eventTable events = {0,1,1,0,0,0,98};
 
     t_Stones Stones[100];
     t_board board[15][15];
@@ -32,8 +34,7 @@ int main(int argc, char *argv[]) {
     int RandTable[100];
     HandPosition posOfHands[7];
     int prev[7];
-    int score = 0;
-    char score_str[5] = "0";
+
 
     TTF_Font *font;
     HandList *hand;

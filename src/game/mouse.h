@@ -12,6 +12,7 @@
 #include "events.h"
 
 bool isThatInHand(SDL_Event event, int *no, HandList *hand, int *index, HandPosition *posOfHands);
-bool isOnTable(SDL_Event event, HandList *hand, int index, int *drawX, int *drawY, t_board board[15][15], t_Stones *Stones, eventTable *events, previous_step *rst);
+bool isOnTable(SDL_Event event, HandList *hand, int index, int *drawX, int *drawY, t_board board[15][15],
+               t_Stones *Stones, eventTable *events, previous_step *rst);
 
 #endif // MOUSE_H_INCLUDED

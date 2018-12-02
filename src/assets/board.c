@@ -1,19 +1,23 @@
 #include "board.h"
 
+//draws the board on the screen
 void generateBoard(SDL_Renderer *r, char* src){
     int width = 0, height = 0, x;
+    //imports the texture from the file
+    //original: https://www.flickr.com/photos/xouved/5371523488
     SDL_Texture *board = IMG_LoadTexture(r,src);
     if(board == NULL){
         SDL_Log("Board: Couldn't load board: %s",SDL_GetError());
         exit(1);
     }
-
+    //gets all kind of data about the texture (width, height, ...)
     SDL_QueryTexture(board, NULL, NULL, &width, &height);
     if(width == 0 || height == 0){
         SDL_Log("Board: Couldn't query texture: %s",SDL_GetError());
         exit(1);
     }
 
+    //sends the texture to the renderer
     SDL_Rect source = {NULL, NULL, width, height};
     SDL_Rect dest = {0,0,873,873};
 
@@ -22,9 +26,11 @@ void generateBoard(SDL_Renderer *r, char* src){
         SDL_Log("Board: Couldn't copy texture: %s", SDL_GetError());
         exit(1);
     }
+    //frees texture from the memory
     SDL_DestroyTexture(board);
 }
 
+//sets the initial state of the board and reset matrices
 void defineBoard(t_board board[15][15], previous_step *rst){
     int ii,jj;
 
